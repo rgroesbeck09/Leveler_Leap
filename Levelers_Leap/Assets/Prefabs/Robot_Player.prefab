@@ -2047,13 +2047,15 @@ MonoBehaviour:
   Speed: 0
   allowPlayerRotation: 0.1
   cam: {fileID: 0}
-  controller: {fileID: 0}
+  controller: {fileID: 4757836856755875627}
   isGrounded: 0
   HorizontalAnimSmoothTime: 0.2
   VerticalAnimTime: 0.2
   StartAnimTime: 0.3
   StopAnimTime: 0.15
   verticalVel: -0.5
+  jumpForce: 7
+  jumpMultiplier: 2
 --- !u!1 &3921334144448749991
 GameObject:
   m_ObjectHideFlags: 0
