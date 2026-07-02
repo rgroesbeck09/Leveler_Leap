@@ -14,7 +14,7 @@ public class MovementInput : MonoBehaviour {
 	public float InputX;
 	public float InputZ;
 	public Vector3 desiredMoveDirection;
-	public bool blockRotationPlayer;
+	public bool blockRotationPlayer = false;
 	public float desiredRotationSpeed = 0.1f;
 	public Animator anim;
 	public float Speed;
@@ -36,9 +36,14 @@ public class MovementInput : MonoBehaviour {
     public float verticalVel;
     private Vector3 moveVector;
 
+	public float jumpForce = 7f;	
+	public float jumpMultiplier = 2.5f;
+	public bool onGravityPad = false;
+	
+
 	// Use this for initialization
 	void Start () {
-		anim = this.GetComponent<Animator> ();
+		anim = this.GetComponent<Animator>();
 		cam = Camera.main;
 		controller = this.GetComponent<CharacterController> ();
 	}
@@ -46,20 +51,26 @@ public class MovementInput : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		InputMagnitude ();
-
+		
+		// check to see if character is grounded
         isGrounded = controller.isGrounded;
-        if (isGrounded)
+        if (isGrounded && verticalVel < 0)
         {
-            verticalVel -= 0;
+            verticalVel = -2f;
         }
-        else
-        {
-            verticalVel -= 1;
-        }
-        moveVector = new Vector3(0, verticalVel * .2f * Time.deltaTime, 0);
-        controller.Move(moveVector);
 
+		// jump if space bar is pressed
+		if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
+		{
+			//Debug.Log("Jump!");
+			verticalVel = jumpForce * (onGravityPad ? jumpMultiplier : 1f);
+			anim.Play("Jump");
+		}
+		
+		verticalVel += Physics.gravity.y * Time.deltaTime;
 
+        moveVector = new Vector3(0, verticalVel, 0);
+        controller.Move(moveVector * Time.deltaTime);
     }
 
     void PlayerMoveAndRotation() {
@@ -80,7 +91,8 @@ public class MovementInput : MonoBehaviour {
 
 		if (blockRotationPlayer == false) {
 			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (desiredMoveDirection), desiredRotationSpeed);
-            controller.Move(desiredMoveDirection * Time.deltaTime * Velocity);
+        	controller.Move(desiredMoveDirection * Time.deltaTime * Velocity);
+		
 		}
 	}
 
