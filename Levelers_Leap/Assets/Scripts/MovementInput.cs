@@ -89,11 +89,7 @@ public class MovementInput : MonoBehaviour {
 
 		desiredMoveDirection = forward * InputZ + right * InputX;
 
-		if (blockRotationPlayer == false) {
-			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (desiredMoveDirection), desiredRotationSpeed);
-        	controller.Move(desiredMoveDirection * Time.deltaTime * Velocity);
-		
-		}
+        controller.Move(desiredMoveDirection * Time.deltaTime * Velocity);
 	}
 
     public void LookAt(Vector3 pos)
