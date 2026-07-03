@@ -6,7 +6,10 @@ public class TimerController : MonoBehaviour
 {
     // Public Variables
     public float CountDown;
-    public ParticleSystem explosion;
+    //public ParticleSystem explosion;
+
+    // Private vars
+    private bool countdownStarted = false;
 
     // Start is called before the first frame update
     void Start()
@@ -17,12 +20,30 @@ public class TimerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if(countdownStarted)
+        {
+            CountDown = CountDown - 1f;
+        }
     }
 
     // track the countdown
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name + " entered the trigger.");
+        if(!countdownStarted)
+        {
+            countdownStarted = !countdownStarted;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        // Write player death here
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // shut door behind the user
+
     }
 }
