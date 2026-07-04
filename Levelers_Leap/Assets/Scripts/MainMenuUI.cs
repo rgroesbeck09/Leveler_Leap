@@ -5,14 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
+    public GameObject mainMenu;
+    public GameObject creditsPanel;
+
     public void PlayGame()
     {
         SceneManager.LoadScene("Experimental_Room");
     }
 
-    public void Credits()
+    public void OpenCredits()
     {
-        SceneManager.LoadScene("Credits");
+        mainMenu.SetActive(false);
+        creditsPanel.SetActive(true);
+    }
+
+    public void BackToMenu()
+    {
+        creditsPanel.SetActive(false);
+        mainMenu.SetActive(true);
     }
 
     public void QuitGame()
