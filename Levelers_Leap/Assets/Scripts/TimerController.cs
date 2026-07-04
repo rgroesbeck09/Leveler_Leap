@@ -1,29 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TimerController : MonoBehaviour
 {
     // Public Variables
     public float CountDown;
     //public ParticleSystem explosion;
+    public TextMeshProUGUI countDownDisplay;
 
     // Private vars
     private bool countdownStarted = false;
+    private float currentTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentTime = CountDown;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(countdownStarted)
-        {
-            CountDown = CountDown - 1f;
-        }
+        if (!countdownStarted)
+            return;
+
+        // Count down
+        currentTime -= Time.deltaTime;
+        
+        DisplayTime(currentTime);
     }
 
     // track the countdown
@@ -45,5 +51,20 @@ public class TimerController : MonoBehaviour
     {
         // shut door behind the user
 
+    }
+
+    void DisplayTime(float timeToDisplay)
+    {
+        int minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        int seconds = Mathf.FloorToInt(timeToDisplay % 60);
+
+        countDownDisplay.text = "Time Left: " + string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    bool TimerFinished()
+    {
+        Debug.Log("Time's Up!");
+
+        return false;
     }
 }

@@ -95,6 +95,7 @@ public class MovementInput : MonoBehaviour {
     public void LookAt(Vector3 pos)
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(pos), desiredRotationSpeed);
+		Application.targetFrameRate = 60; 
     }
 
     public void RotateToCamera(Transform t)
