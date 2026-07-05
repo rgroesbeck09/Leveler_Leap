@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+//<<<<<<< HEAD
 ﻿using UnityEngine;
 using System.Collections;
 using TMPro;
@@ -34,7 +34,7 @@ public class EnvMapAnimator : MonoBehaviour {
         }
 	}
 }
-=======
+/* =======
 ﻿using UnityEngine;
 using System.Collections;
 using TMPro;
@@ -70,4 +70,5 @@ public class EnvMapAnimator : MonoBehaviour {
         }
 	}
 }
->>>>>>> main
+//>>>>>>> main
+*/
