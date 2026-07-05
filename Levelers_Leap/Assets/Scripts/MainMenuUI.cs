@@ -10,7 +10,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("Experimental_Room");
+        SceneManager.LoadScene("MainGame");
     }
 
     public void OpenCredits()
