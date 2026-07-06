@@ -130,4 +130,16 @@ public class MovementInput : MonoBehaviour {
 			anim.SetFloat ("Blend", Speed, StopAnimTime, Time.deltaTime);
 		}
 	}
+	//add physics interaction for seesaw & block
+	private void OnControllerColliderHit(ControllerColliderHit hit)
+	{
+		Rigidbody rb = hit.collider.attachedRigidbody;
+
+		if (rb == null || rb.isKinematic)
+			return;
+		//prevent up/down movement
+		Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+
+		rb.AddForce(pushDir * Velocity, ForceMode.Impulse);
+	}
 }
