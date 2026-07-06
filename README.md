@@ -11,8 +11,8 @@ By: Alpine Audio
 Link: https://assetstore.unity.com/packages/audio/sound-fx/force-field-sci-fi-collection-113256
 
 Main Menu & Room/Floor Textures - Amanda Bragg:
-- Found wall texture at https://www.sharetextures.com/textures/roof/false_ceiling_2 
-- Applied texture to rooms and adjusted albedo, normal, metallic, etc. accordingly.
+- Found wall texture at https://www.sharetextures.com/textures/wall/stone-wall-25 
+- Applied texture to rooms and adjusted albedo, normal, metallic (made much higher), etc. accordingly.
 - Created hand drawn 2D menu art background on Procreate for iPad, then imported to Unity.
 - Created a UI canvas with 2 panels: first is the main menu which shows the game title, and “Play”, “Credits”, and “Exit” buttons; second is the credits panel which displays the names of all group members and includes a back button to the main menu.
 - Main menu/credits uses fonts from: https://www.fontspace.com/cyber-horizon-font-f143392 and https://www.fontspace.com/nitro-eagle-font-f145939 
