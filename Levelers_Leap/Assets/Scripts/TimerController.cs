@@ -25,18 +25,22 @@ public class TimerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!countdownStarted)
-            return;
+        if (countdownStarted)
+        {
+            // Count down
+            currentTime -= Time.deltaTime;
 
-        // Count down
-        currentTime -= Time.deltaTime;
-        
-        DisplayTime(currentTime);
+            DisplayTime(currentTime);
+        }
 
         Debug.Log("PlayerIn: " + currentTime);
 
         if (playerIn && currentTime <= 0)
         {
+            // Timer Stopping
+            countdownStarted = false;
+            countDownDisplay.text = "Times Up You Died";
+
             Destroy(Player);
             StartCoroutine(TimerFinishedBoom());
 
@@ -60,6 +64,7 @@ public class TimerController : MonoBehaviour
     {
         // let game know player left
         playerIn = false;
+        countDownDisplay.text = "";
     }
 
     void DisplayTime(float timeToDisplay)
