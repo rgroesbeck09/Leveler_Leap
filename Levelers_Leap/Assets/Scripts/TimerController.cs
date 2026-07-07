@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TimerController : MonoBehaviour
 {
     // Public Variables
     public float CountDown;
-    public ParticleSystem[] explosions;
     public TextMeshProUGUI countDownDisplay;
+    public TextMeshProUGUI deathText;
     public GameObject Player;
+    public GameObject CameraObj;
+    public GameObject PlayerCam;
+    public CharacterController playerController; 
 
     // Private vars
     private bool countdownStarted = false;
@@ -33,19 +37,9 @@ public class TimerController : MonoBehaviour
             DisplayTime(currentTime);
         }
 
-        Debug.Log("PlayerIn: " + currentTime);
-
         if (playerIn && currentTime <= 0)
         {
-            // Timer Stopping
-            countdownStarted = false;
-            countDownDisplay.text = "Times Up You Died";
-
-            Destroy(Player);
-            StartCoroutine(TimerFinishedBoom());
-
-            // kick off cut scene
-
+            StartCoroutine(playerDeath());
         }
 
     }
@@ -64,7 +58,9 @@ public class TimerController : MonoBehaviour
     {
         // let game know player left
         playerIn = false;
-        countDownDisplay.text = "";
+        countDownDisplay.gameObject.SetActive(false);
+        deathText.color = Color.green;
+        deathText.text = "Congrats You Have Escaped, right back to where it all started. ";
     }
 
     void DisplayTime(float timeToDisplay)
@@ -75,15 +71,24 @@ public class TimerController : MonoBehaviour
         countDownDisplay.text = "Time Left: " + string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    IEnumerator TimerFinishedBoom()
+    IEnumerator playerDeath()
     {
-        Debug.Log("Time's Up!");
+        // Timer Stopping
+        countdownStarted = false;
+        countDownDisplay.gameObject.SetActive(false);
+        deathText.text = "Times Up You Died";
+        PlayerCam.SetActive(false);
+        CameraObj.SetActive(true);
+        CameraObj.transform.position = PlayerCam.transform.position;
 
-        // explosion time
-        foreach (ParticleSystem boom in explosions)
-        {
-            boom.Play();
-            yield return new WaitForSeconds(0.1f);
-        }
+        playerController.gameObject.SetActive(false);
+
+        Destroy(Player);
+
+        yield return new WaitForSeconds(10f);
+
+        // Go Back to Main menu
+        SceneManager.LoadScene("MainMenuUI");
     }
+
 }

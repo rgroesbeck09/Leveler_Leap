@@ -25,3 +25,29 @@ Main Menu & Room/Floor Textures - Amanda Bragg:
 - The UI uses music from https://pixabay.com/sound-effects/musical-sc-fi-beat-effect-253284/ to play when the player is in the menu or credits panels. 
 - Finally, I created a script for the UI (MainMenuManager) that responded to when the buttons were clicked and allowed the gameplay scene to be loaded. It uses two panels and has setActive() show/hide them, while SceneManager.LoadScene() transitions to the main game scene. Everything was adjusted in the hierarchy and the script was applied where needed for transitions. 
 
+Raymond Groesbeck:
+-----------------------------
+- Initial Level design
+- Timer
+- integration of teams tickets
+- Delt with merge conflicts
+- Came up with designs
+- Had implementation issues with our cutscenes and particle physics
+- Implemented mouse look around and easy movements
+- Created our inital test enviroment for our game mechanics
+- Added in UI to let user know they have won the game or failed it. 
+- Implemented some game sounds
+- Dragged in our original game design from project 1 as a reward for winning the game.  
+
+* https://cloud.unity.com/home/organizations/2475985092540/assets/my-asset-store-assets/asset-store?assetId=54622:1
+* https://cloud.unity.com/home/organizations/2475985092540/assets/my-asset-store-assets/asset-store?assetId=54724:1
+* Grass Material: from manytextures.com https://www.manytextures.com/texture/1/green-grass/
+* Dirt/Dry grass Material: from manytextures.com https://www.manytextures.com/texture/53/dry-grass-ground/
+* Stone Material: from manytextures.com https://www.manytextures.com/texture/130/mountain-rock/
+* Water Texture and Normal map: water0339 from CADhatch.com https://www.cadhatch.com/seamless-water-textures
+* Wood Texture: from TextureLabs.org https://texturelabs.org/textures/wood\_259/
+* Boat Model: by garleth93 on Free3D.com https://free3d.com/3d-model/boat-model-436261.html'
+
+Video Link:
+-----------------------------
+https://youtu.be/UCope_-Lq38
