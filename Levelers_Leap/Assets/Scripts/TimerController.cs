@@ -7,12 +7,14 @@ public class TimerController : MonoBehaviour
 {
     // Public Variables
     public float CountDown;
-    //public ParticleSystem explosion;
+    public ParticleSystem[] explosions;
     public TextMeshProUGUI countDownDisplay;
+    public GameObject Player;
 
     // Private vars
     private bool countdownStarted = false;
     private float currentTime;
+    private bool playerIn;
 
     // Start is called before the first frame update
     void Start()
@@ -38,19 +40,31 @@ public class TimerController : MonoBehaviour
         if(!countdownStarted)
         {
             countdownStarted = !countdownStarted;
+            playerIn = true;
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        // Write player death here
+        // Write player death here and explosions
+        // Kick off death scene and explosions
+        if (playerIn)
+        {
+            Destroy(Player);
+
+            // Make things go boom
+            TimerFinishedBoom();
+
+            // kick off cut scene
+            
+        }
 
     }
 
     private void OnTriggerExit(Collider other)
     {
-        // shut door behind the user
-
+        // let game know player left
+        playerIn = false;
     }
 
     void DisplayTime(float timeToDisplay)
@@ -61,10 +75,15 @@ public class TimerController : MonoBehaviour
         countDownDisplay.text = "Time Left: " + string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    bool TimerFinished()
+    IEnumerator TimerFinishedBoom()
     {
         Debug.Log("Time's Up!");
 
-        return false;
+        // explosion time
+        foreach (ParticleSystem boom in explosions)
+        {
+            boom.Play();
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }
