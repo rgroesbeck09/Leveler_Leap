@@ -1,5 +1,9 @@
 # Leveler_Leap
-Valeria Ugarte: Added physics based seesaw and moveable block to implement puzzle element. Seesaw consists of 3D objects like the base of the seesaw and the board which uses a Hingejoint and Rigidbody to react to weight and player movement. Moveable block allows for player interaction with puzzle. Script is added to allow player to jump on platform and move block onto seesaw.
+Valeria Ugarte: 
+Added physics based seesaw and moveable block to implement puzzle element. Seesaw consists of 3D objects like the base of the seesaw and the board which uses a Hingejoint and Rigidbody to react to weight and player movement. Moveable block allows for player interaction with puzzle. Script is added to allow player to jump on platform and move block onto seesaw.
+
+Added ambient noise to Main Game scene
+Found at - https://assetstore.unity.com/packages/audio/ambient/sci-fi/sci-industrial-ambience-19010#publisher
 
 
 Christopher Garcia-Arvizu:
