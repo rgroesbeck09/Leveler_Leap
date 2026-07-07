@@ -32,6 +32,18 @@ public class TimerController : MonoBehaviour
         currentTime -= Time.deltaTime;
         
         DisplayTime(currentTime);
+
+        Debug.Log("PlayerIn: " + currentTime);
+
+        if (playerIn && currentTime <= 0)
+        {
+            Destroy(Player);
+            StartCoroutine(TimerFinishedBoom());
+
+            // kick off cut scene
+
+        }
+
     }
 
     // track the countdown
@@ -42,23 +54,6 @@ public class TimerController : MonoBehaviour
             countdownStarted = !countdownStarted;
             playerIn = true;
         }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        // Write player death here and explosions
-        // Kick off death scene and explosions
-        if (playerIn)
-        {
-            Destroy(Player);
-
-            // Make things go boom
-            TimerFinishedBoom();
-
-            // kick off cut scene
-            
-        }
-
     }
 
     private void OnTriggerExit(Collider other)
