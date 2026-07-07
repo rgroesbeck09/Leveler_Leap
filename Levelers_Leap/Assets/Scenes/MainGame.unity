@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657546, g: 0.49641275, b: 0.5748161, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465757, g: 0.49641287, b: 0.57481664, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5352,29 +5352,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1345976784}
-  - {fileID: 1419557546}
-  - {fileID: 470045761}
-  - {fileID: 1927480634}
-  - {fileID: 1886737546}
-  - {fileID: 1168456122}
-  - {fileID: 2127468301}
-  - {fileID: 1454050955}
-  - {fileID: 276526574}
-  - {fileID: 2108684123}
-  - {fileID: 443455775}
-  - {fileID: 684191054}
-  - {fileID: 38777413}
-  - {fileID: 537544027}
-  - {fileID: 1839507553}
-  - {fileID: 1781126037}
-  - {fileID: 403586519}
-  - {fileID: 511806738}
-  - {fileID: 1342330122}
-  - {fileID: 2147182254}
-  - {fileID: 795073169}
-  - {fileID: 669143817}
-  - {fileID: 330634641}
   - {fileID: 1066574346}
   - {fileID: 379748131}
   - {fileID: 264476730}
@@ -6202,7 +6179,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 167027455}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!59 &210428432
 HingeJoint:
@@ -7395,7 +7372,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 167027455}
-  m_RootOrder: 23
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &264476731
@@ -23219,12 +23195,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 956111359}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.6, y: 3.29, z: 0.28}
+  m_LocalPosition: {x: -5.064, y: 2.792, z: 0.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 167027455}
-  m_RootOrder: 24
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &956111361
@@ -23666,7 +23641,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 167027455}
-  m_RootOrder: 25
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &990750085
 BoxCollider:
@@ -30109,7 +30084,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27872
+  m_Name: pb_Mesh36226
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -39354,7 +39329,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27804
+  m_Name: pb_Mesh36154
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
