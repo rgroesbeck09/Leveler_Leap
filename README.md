@@ -1,4 +1,6 @@
 # Leveler_Leap
+Valeria Ugarte: Added physics based seesaw and moveable block to implement puzzle element. Seesaw consists of 3D objects like the base of the seesaw and the board which uses a Hingejoint and Rigidbody to react to weight and player movement. Moveable block allows for player interaction with puzzle. Script is added to allow player to jump on platform and move block onto seesaw.
+
 
 Christopher Garcia-Arvizu:
 Added jump capability and jump animation to character. Character was imported from project 1. 
