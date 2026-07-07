@@ -39,6 +39,9 @@ public class MovementInput : MonoBehaviour {
 	public float jumpForce = 7f;	
 	public float jumpMultiplier = 2.5f;
 	public bool onGravityPad = false;
+	private AudioSource walkAudio;
+	[SerializeField] private float footStepInterval = 0.01f;
+	private float footStepTimer;
 	
 
 	// Use this for initialization
@@ -46,6 +49,7 @@ public class MovementInput : MonoBehaviour {
 		anim = this.GetComponent<Animator>();
 		cam = Camera.main;
 		controller = this.GetComponent<CharacterController> ();
+		walkAudio = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -65,12 +69,31 @@ public class MovementInput : MonoBehaviour {
 			//Debug.Log("Jump!");
 			verticalVel = jumpForce * (onGravityPad ? jumpMultiplier : 1f);
 			anim.Play("Jump");
+
 		}
 		
 		verticalVel += Physics.gravity.y * Time.deltaTime;
 
         moveVector = new Vector3(0, verticalVel, 0);
         controller.Move(moveVector * Time.deltaTime);
+
+		// foot steps audio
+		bool isWalking = controller.velocity.magnitude > 0.01f && controller.isGrounded;
+
+		if(isWalking)
+		{
+			footStepTimer -= Time.deltaTime;
+			if(footStepTimer <= 0)
+			{
+				walkAudio.Play();
+				//Debug.Log("Step audio started");
+				footStepTimer = footStepInterval;
+			}
+		}
+		else
+		{
+			footStepTimer = 0;
+		}
     }
 
     void PlayerMoveAndRotation() {
@@ -90,6 +113,13 @@ public class MovementInput : MonoBehaviour {
 		desiredMoveDirection = forward * InputZ + right * InputX;
 
         controller.Move(desiredMoveDirection * Time.deltaTime * Velocity);
+
+		/*/ start walk audio if not already playing
+		if(isGrounded && !walkAudio.isPlaying)
+		{
+			walkAudio.Play();
+		}*/
+		
 	}
 
     public void LookAt(Vector3 pos)
@@ -128,6 +158,12 @@ public class MovementInput : MonoBehaviour {
 			PlayerMoveAndRotation ();
 		} else if (Speed < allowPlayerRotation) {
 			anim.SetFloat ("Blend", Speed, StopAnimTime, Time.deltaTime);
+/*
+			// if walk audio is playing, stop it
+			if(walkAudio.isPlaying)
+			{
+				walkAudio.Stop();
+			} */
 		}
 	}
 	//add physics interaction for seesaw & block
@@ -141,5 +177,18 @@ public class MovementInput : MonoBehaviour {
 		Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
 
 		rb.AddForce(pushDir * Velocity, ForceMode.Impulse);
+	}
+
+	// foot steps sound
+	public void playFootStep()
+	{
+		// checked to see if character is on the ground
+		if(!isGrounded)
+		{
+			return;
+		}
+
+		walkAudio.Play();
+
 	}
 }
